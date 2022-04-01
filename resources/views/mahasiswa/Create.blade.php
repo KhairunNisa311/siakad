@@ -32,8 +32,19 @@
                     </div>
                     <div class="form-group">
                         <label for="Jurusan">Jurusan</label>
-                        <input type="Jurusan" name="jurusan" class="form-control" id="Jurusan"
-                            ariadescribedby="Jurusan">
+                        <input type="Jurusan" name="jurusan" class="form-control" id="Jurusan" ariadescribedby="Jurusan">
+                    </div>
+                    <div class="form-group">
+                        <label for="Alamat">Alamat</label>
+                        <input type="Alamat" name="alamat" class="form-control" id="Alamat" aria-describedby="Alamat">
+                    </div>
+                    <div class="form-group">
+                        <label for="Tanggal Lahir">Tanggal Lahir</label>
+                        <input type="Tanggal Lahir" name="tanggal_lahir" class="form-control" id="Tanggal Lahir" aria-describedby="Tanggal Lahir">
+                    </div>
+                    <div class="form-group">
+                        <label for="Email">Email</label>
+                        <input type="Email" name="email" class="form-control" id="Email" aria-describedby="Email">
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
