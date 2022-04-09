@@ -1,4 +1,5 @@
 @extends('mahasiswa.layout')
+
 @section('content')
 <div class="row">
     <div class="col-lg-12 margin-tb">
@@ -36,19 +37,19 @@
         <th>Email</th>
         <th width="280px">Action</th>
     </tr>
-    @foreach ($mahasiswa as $mhs)
+    @foreach ($paginate as $mhs)
     <tr>
         <td>{{ $mhs ->nim }}</td>
         <td>{{ $mhs ->nama }}</td>
-        <td>{{ $mhs ->kelas }}</td>
+        <td>{{ $mhs ->kelas -> nama_kelas}}</td>
         <td>{{ $mhs ->jurusan }}</td>
         <td>{{ $mhs ->alamat }}</td>
         <td>{{ $mhs ->tanggal_lahir }}</td>
         <td>{{ $mhs ->email}}</td>
         <td>
-            <form action="{{ route('mahasiswa.destroy',['mahasiswa'=>$mhs->id_mahasiswa]) }}" method="POST">
-                <a class="btn btn-info" href="{{ route('mahasiswa.show',$mhs->id_mahasiswa) }}">Show</a>
-                <a class="btn btn-primary" href="{{ route('mahasiswa.edit',$mhs->id_mahasiswa) }}">Edit</a>
+            <form action="{{ route('mahasiswa.destroy',['mahasiswa'=>$mhs->nim]) }}" method="POST">
+                <a class="btn btn-info" href="{{ route('mahasiswa.show',$mhs->nim) }}">Show</a>
+                <a class="btn btn-primary" href="{{ route('mahasiswa.edit',$mhs->nim) }}">Edit</a>
                 @csrf
                 @method('DELETE')
                 <button type="submit" class="btn btn-danger">Delete</button>
@@ -58,6 +59,6 @@
     @endforeach
 </table>
 <div class="d-flex">
-    {{ $mahasiswa->links() }}
+    {{ $paginate->links() }}
 </div>
 @endsection
