@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Mahasiswa;
 use App\Models\Kelas;
+use App\Models\Mahasiswa_MataKuliah;
+use App\Models\MataKuliah;
 use DB;
 use Illuminate\Http\Request;
 
@@ -175,4 +177,13 @@ class MahasiswaController extends Controller
             'paginate' => $mahasiswa
         ]);
     }
+
+    public function nilai($id)
+    {
+        $daftar = Mahasiswa_MataKuliah::with("matakuliah")->where("mahasiswa_id", $id)->get();
+        $daftar->mahasiswa = Mahasiswa::with('kelas')->where('id_mahasiswa', $id)->first();
+        return view('mahasiswa.nilai', compact('daftar'));
+    }
+
 }
+
