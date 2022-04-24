@@ -7,6 +7,7 @@ use App\Models\Kelas;
 use App\Models\Mahasiswa_MataKuliah;
 use App\Models\MataKuliah;
 use DB;
+use PDF;
 use Illuminate\Http\Request;
 
 class MahasiswaController extends Controller
@@ -52,6 +53,7 @@ class MahasiswaController extends Controller
         $request->validate([
             'nim' => 'required',
             'nama' => 'required',
+            'foto' => 'required',
             'kelas' => 'required',
             'jurusan' => 'required',
             'alamat' => 'required',
@@ -62,6 +64,7 @@ class MahasiswaController extends Controller
         $mahasiswa = new Mahasiswa;
         $mahasiswa->nim = $request->get('nim');
         $mahasiswa->nama = $request->get('nama');
+        $mahasiswa->foto = $request->file('foto')->store('images', 'public');
         $mahasiswa->jurusan = $request->get('jurusan');
         $mahasiswa->alamat = $request->get('alamat');
         $mahasiswa->tanggal_lahir = $request->get('tanggal_Lahir');
@@ -130,6 +133,7 @@ class MahasiswaController extends Controller
         $request->validate([
             'nim' => 'required',
             'nama' => 'required',
+            'foto' => 'required',
             'kelas' => 'required',
             'jurusan' => 'required',
             'alamat' => 'required',
@@ -142,6 +146,12 @@ class MahasiswaController extends Controller
         $mahasiswa = Mahasiswa::with('kelas')->where('nim', $Nim)->first();
         $mahasiswa->nim = $request->get('nim');
         $mahasiswa->nama = $request->get('nama');
+        if ($mahasiswa->foto && file_exists(storage_path('app/public' . $mahasiswa->foto))) {
+            Storage::delete('public/' . $mahasiswa->foto);
+        }
+        $image_name = $request->file('foto')->store('images', 'public');
+        $mahasiswa->foto = $image_name;
+
         $mahasiswa->jurusan = $request->get('jurusan');
         $mahasiswa->alamat = $request->get('alamat');
         $mahasiswa->tanggal_lahir = $request->get('tanggal_lahir');
@@ -183,6 +193,14 @@ class MahasiswaController extends Controller
         $daftar = Mahasiswa_MataKuliah::with("matakuliah")->where("mahasiswa_id", $id)->get();
         $daftar->mahasiswa = Mahasiswa::with('kelas')->where('id_mahasiswa', $id)->first();
         return view('mahasiswa.nilai', compact('daftar'));
+    }
+
+    public function cetak_nilai($id)
+    {
+        $daftar = Mahasiswa_MataKuliah::with("matakuliah")->where("mahasiswa_id", $id)->get();
+        $daftar->mahasiswa = Mahasiswa::with('kelas')->where("id_mahasiswa", $id)->first();
+        $pdf = PDF::loadview('mahasiswa.cetak_pdf', compact('daftar'));
+        return $pdf->stream();
     }
 
 }

@@ -47,6 +47,7 @@
             </tbody>
         </table>
         </div>
+        <a class="btn btn-danger mt-3" href="{{ route('cetak_nilai', $daftar->mahasiswa->id_mahasiswa) }}"> Cetak Ke PDF</a>
             </div>
     </div>
 </div>
