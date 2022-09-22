@@ -3,19 +3,19 @@
 namespace Tests\Feature;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
-class ExampleTest extends TestCase
+class EditTest extends TestCase
 {
     /**
-     * A basic test example.
+     * A basic feature test example.
      *
      * @return void
      */
     public function test_example()
     {
-        $response = $this->get('/mahasiswa/2021434574');
-
+        $response = $this->get('/mahasiswa/2021434574/edit');
         $response->assertStatus(200);
         $response->assertSeeText("Jurusan");
         $response->assertSeeText("Nama");
@@ -26,8 +26,6 @@ class ExampleTest extends TestCase
         $response->assertSeeText("Tanggal Lahir");
         $response->assertSeeText("Email");
 
-        $response->assertSeeText("Nim: 2021434574");
-        // $response->assertSeeText("Nama: Milyun Ni'ma Shoumi");
-
+        
     }
 }
