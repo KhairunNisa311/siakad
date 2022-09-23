@@ -26,7 +26,5 @@ class CreateTest extends TestCase
         $response->assertSeeText("Alamat");
         $response->assertSeeText("Tanggal Lahir");
         $response->assertSeeText("Email");
-
-
     }
 }

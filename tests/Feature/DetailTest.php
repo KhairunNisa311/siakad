@@ -20,8 +20,10 @@ class DetailTest extends TestCase
         $response->assertStatus(200);
         $response->assertSeeText("Nim: 2021434574");
         $response->assertSeeText("Nama: Milyun Ni'ma Shoumi");
-        // $response->assertSeeText("Foto: ");
-
-
+        $response->assertSeeText("Kelas: TI 2C");
+        $response->assertSeeText("Jurusan: Jurusan Teknologi Informasi");
+        $response->assertSeeText("Alamat: Malang");
+        $response->assertSeeText("Tanggal Lahir: 02 Januari 2000");
+        $response->assertSeeText("Email: milyun@gmail.com");
     }
 }

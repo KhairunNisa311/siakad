@@ -26,8 +26,5 @@ class ExampleTest extends TestCase
         $response->assertSeeText("Tanggal Lahir");
         $response->assertSeeText("Email");
 
-        $response->assertSeeText("Nim: 2021434574");
-        // $response->assertSeeText("Nama: Milyun Ni'ma Shoumi");
-
     }
 }
