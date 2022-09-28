@@ -27,8 +27,8 @@
                         <input type="Nama" name="nama" class="form-control" id="Nama" ariadescribedby="Nama">
                     </div>
                     <div class="form-group">
-                        <label for="Nama">Foto</label>
-                        <input type="File" name="nama" class="form-control" id="Nama" ariadescribedby="Nama">
+                        <label for="Foto">Foto</label>
+                        <input type="File" name="foto" class="form-control" id="Foto" ariadescribedby="Foto">
                     </div>
                     <div class="form-group">
                         <label for="Kelas">Kelas</label>
@@ -47,8 +47,8 @@
                         <input type="Alamat" name="alamat" class="form-control" id="Alamat" aria-describedby="Alamat">
                     </div>
                     <div class="form-group">
-                        <label for="Tanggal Lahir">Tanggal Lahir</label>
-                        <input type="Tanggal Lahir" name="tanggal_lahir" class="form-control" id="Tanggal Lahir" aria-describedby="Tanggal Lahir">
+                        <label for="Tanggal_Lahir">Tanggal Lahir</label>
+                        <input type="Date" name="tanggal_lahir" class="form-control" id="Tanggal_Lahir" aria-describedby="Tanggal_Lahir">
                     </div>
                     <div class="form-group">
                         <label for="Email">Email</label>

@@ -55,9 +55,9 @@
                             aria-describedby="Alamat">
                     </div>
                     <div class="form-group">
-                        <label for="Tanggal Lahir">Tanggal Lahir</label>
-                        <input type="Tanggal Lahir" name="tanggal_lahir" class="form-control" id="Tanggal Lahir" value="{{ $mahasiswa->tanggal_lahir }}"
-                            aria-describedby="Tanggal Lahir">
+                        <label for="Tanggal_Lahir">Tanggal Lahir</label>
+                        <input type="Tanggal_Lahir" name="tanggal_lahir" class="form-control" id="Tanggal_Lahir" value="{{ $mahasiswa->tanggal_lahir }}"
+                            aria-describedby="Tanggal_Lahir">
                     </div>
                     <div class="form-group">
                         <label for="Email">Email</label>
